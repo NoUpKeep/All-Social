@@ -42,7 +42,7 @@ Simple!
 
 ## Built With
 
- [Visual Studio 2015](http://www.visualstudio.com/vs/) or [Visual Studio 2017](http://www.visualstudio.com/vs/)
+ [Visual Studio 2017](http://www.visualstudio.com/vs/)
  
 The IDE used (Yeah, I wrote it in VB.net, so what?)
 
