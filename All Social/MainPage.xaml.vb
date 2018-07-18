@@ -76,10 +76,13 @@ Public NotInheritable Class MainPage
         iconRotation.Begin()
     End Sub
 
-    Private Sub AllSocialTW_LoadCompleted(sender As Object, e As NavigationEventArgs) Handles AllSocialTW.LoadCompleted
+    Private Sub AllSocialTELE_LoadCompleted(sender As Object, e As NavigationEventArgs) Handles AllSocialTELE.LoadCompleted
         iconRotation.Stop()
     End Sub
 
+    Private Sub AllSocialTW_LoadCompleted(sender As Object, e As NavigationEventArgs) Handles AllSocialTW.LoadCompleted
+        iconRotation.Stop()
+    End Sub
     Private Sub AllSocialTW_Loading(sender As FrameworkElement, args As Object) Handles AllSocialTW.Loading
         iconRotation.Begin()
     End Sub
@@ -104,6 +107,12 @@ Public NotInheritable Class MainPage
                 Else
                     Await displayMessageAsync("Quit " & AppName, "Are you sure you want to quit the app?", "")
                 End If
+            Case 3
+                If AllSocialTELE.CanGoBack Then
+                    AllSocialTELE.GoBack()
+                Else
+                    Await displayMessageAsync("Quit " & AppName, "Are you sure you want to quit the app?", "")
+                End If
         End Select
     End Sub
 
@@ -113,26 +122,42 @@ Public NotInheritable Class MainPage
                 FaceBook.Visibility = Visibility.Collapsed
                 Twitter.Visibility = Visibility.Visible
                 Instagram.Visibility = Visibility.Visible
+                Telegram.Visibility = Visibility.Visible
                 '
                 AllSocialFB.Visibility = Visibility.Visible
                 AllSocialTW.Visibility = Visibility.Collapsed
                 AllSocialINST.Visibility = Visibility.Collapsed
+                AllSocialTELE.Visibility = Visibility.Collapsed
             Case 1
                 FaceBook.Visibility = Visibility.Visible
                 Twitter.Visibility = Visibility.Collapsed
                 Instagram.Visibility = Visibility.Visible
+                Telegram.Visibility = Visibility.Visible
                 '
                 AllSocialFB.Visibility = Visibility.Collapsed
                 AllSocialTW.Visibility = Visibility.Visible
                 AllSocialINST.Visibility = Visibility.Collapsed
+                AllSocialTELE.Visibility = Visibility.Collapsed
             Case 2
                 FaceBook.Visibility = Visibility.Visible
                 Twitter.Visibility = Visibility.Visible
                 Instagram.Visibility = Visibility.Collapsed
+                Telegram.Visibility = Visibility.Visible
                 '
                 AllSocialFB.Visibility = Visibility.Collapsed
                 AllSocialTW.Visibility = Visibility.Collapsed
                 AllSocialINST.Visibility = Visibility.Visible
+                AllSocialTELE.Visibility = Visibility.Collapsed
+            Case 3
+                FaceBook.Visibility = Visibility.Visible
+                Twitter.Visibility = Visibility.Visible
+                Instagram.Visibility = Visibility.Visible
+                Telegram.Visibility = Visibility.Collapsed
+                '
+                AllSocialFB.Visibility = Visibility.Collapsed
+                AllSocialTW.Visibility = Visibility.Collapsed
+                AllSocialINST.Visibility = Visibility.Collapsed
+                AllSocialTELE.Visibility = Visibility.Visible
         End Select
     End Sub
 
@@ -160,6 +185,8 @@ Public NotInheritable Class MainPage
                 AllSocialTW.Navigate(New Uri(MyWebViewSource))
             Case 2
                 AllSocialINST.Navigate(New Uri(MyWebViewSource))
+            Case 3
+                AllSocialTELE.Navigate(New Uri(MyWebViewSource))
         End Select
     End Sub
 
@@ -211,6 +238,11 @@ Public NotInheritable Class MainPage
                                                                                               AllSocialINST.GoBack()
                                                                                               a.Handled = True
                                                                                           End If
+                                                                                      Case 3
+                                                                                          If AllSocialTELE.CanGoBack Then
+                                                                                              AllSocialTELE.GoBack()
+                                                                                              a.Handled = True
+                                                                                          End If
                                                                                   End Select
                                                                               End Sub
         SelectNetwork(0)
@@ -226,9 +258,7 @@ Public NotInheritable Class MainPage
             Case 2
                 AllSocialINST.Refresh()
             Case 3
-                AllSocialVimeo.Refresh()
-            Case 4
-                AllSocialLink.Refresh()
+                AllSocialTELE.Refresh()
         End Select
     End Sub
 
@@ -256,6 +286,10 @@ Public NotInheritable Class MainPage
         Info.Visibility = Visibility.Visible
     End Sub
 
+    Private Sub TELE_Tapped(sender As Object, e As TappedRoutedEventArgs) Handles TELE.Tapped
+        SelectNetwork(3)
+    End Sub
+
     Private Async Sub TOP_Click(sender As Object, e As RoutedEventArgs) Handles TOP.Click
         Dim ScrollToTopString = "var int = setInterval(function(){window.scrollBy(0, -36); if( window.pageYOffset === 0 ) clearInterval(int); }, 0.1);"
         Select Case WhatSocialNetwork
@@ -266,14 +300,11 @@ Public NotInheritable Class MainPage
             Case 2
                 Await AllSocialINST.InvokeScriptAsync("eval", New String() {ScrollToTopString})
             Case 3
-                Await AllSocialVimeo.InvokeScriptAsync("eval", New String() {ScrollToTopString})
-            Case 4
-                Await AllSocialLink.InvokeScriptAsync("eval", New String() {ScrollToTopString})
+                Await AllSocialTELE.InvokeScriptAsync("eval", New String() {ScrollToTopString})
         End Select
     End Sub
 
     Private Sub TW_Tapped(sender As Object, e As TappedRoutedEventArgs) Handles TW.Tapped
         SelectNetwork(1)
     End Sub
-
 End Class

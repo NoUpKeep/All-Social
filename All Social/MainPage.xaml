@@ -17,8 +17,7 @@
         <WebView x:Name="AllSocialFB" Margin="0,48,0,0" />
         <WebView x:Name="AllSocialTW" Margin="0,48,0,0" Visibility="Collapsed" />
         <WebView x:Name="AllSocialINST" Margin="0,48,0,0" Visibility="Collapsed" />
-        <WebView x:Name="AllSocialVimeo" Margin="0,48,0,0" Visibility="Collapsed" />
-        <WebView x:Name="AllSocialLink" Margin="0,48,0,0" Visibility="Collapsed" />
+        <WebView x:Name="AllSocialTELE" Margin="0,48,0,0" Visibility="Collapsed" />
         <CommandBar x:Name="CB" Background="#FF3B5998" Foreground="White" VerticalAlignment="Top" BorderBrush="White">
             <AppBarButton x:Name="BACK" Icon="Back" Label="Back" Foreground="White" />
             <AppBarButton x:Name="TOP" Icon="Upload" Label="Top" Foreground="White" />
@@ -35,7 +34,7 @@
         </CommandBar>
         <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
                     Width="50" Height="50" Background="Transparent" VerticalAlignment="Top" Foreground="White" Canvas.ZIndex="1" />
-        <Grid x:Name="SIDEBAR" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="250" Margin="0,48,0,0" Background="#D83B5998" BorderThickness="0,0,1,0" Visibility="Collapsed">
+        <Grid x:Name="SIDEBAR" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="250" Margin="0,48,0,0" Background="#D83B5998" BorderThickness="0,0,1,0" Visibility="Visible">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Height="55">
                     <Image Width="50" Height="50" Source="Assets/Square44x44Logo.targetsize-256.png" Margin="30,0,0,0" />
@@ -52,6 +51,10 @@
                 <StackPanel x:Name="Instagram" Orientation="Horizontal" Visibility="Visible" Height="55">
                     <Image x:Name="INST" Source="SocialIcons/Icon_Instagram.png" Width="50" Height="50" />
                     <TextBlock Text="Instagram" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="10,0,0,0" />
+                </StackPanel>
+                <StackPanel x:Name="Telegram" Orientation="Horizontal" Visibility="Visible" Height="55">
+                    <Image x:Name="TELE" Source="SocialIcons/Icon_Telegram.png" Width="50" Height="50" />
+                    <TextBlock Text="Telegram" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="10,0,0,0" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="ABOUT_APP" FontFamily="Segoe MDL2 Assets" Content="&#xE897;"
