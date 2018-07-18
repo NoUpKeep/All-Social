@@ -178,7 +178,7 @@ Public NotInheritable Class MainPage
     End Sub
 
     Private Async Sub hyperDev_Click(sender As Object, e As RoutedEventArgs) Handles hyperDev.Click
-        Dim logoURL = New Uri("https://github.com/CelestialDoom/AllSocial")
+        Dim logoURL = New Uri("https://github.com/CelestialDoom/All-Social")
         Await Windows.System.Launcher.LaunchUriAsync(logoURL)
     End Sub
 
