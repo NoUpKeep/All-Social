@@ -8,7 +8,98 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <Storyboard x:Name="iconRotation" AutoReverse="False" RepeatBehavior="Forever">
+            <DoubleAnimation Duration="0:0:1" To="360" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="refreshIcon" />
+        </Storyboard>
+    </Page.Resources>
     <Grid>
-
+        <WebView x:Name="AllSocialFB" Margin="0,48,0,0" />
+        <WebView x:Name="AllSocialTW" Margin="0,48,0,0" Visibility="Collapsed" />
+        <WebView x:Name="AllSocialINST" Margin="0,48,0,0" Visibility="Collapsed" />
+        <WebView x:Name="AllSocialVimeo" Margin="0,48,0,0" Visibility="Collapsed" />
+        <WebView x:Name="AllSocialLink" Margin="0,48,0,0" Visibility="Collapsed" />
+        <CommandBar x:Name="CB" Background="#FF3B5998" Foreground="White" VerticalAlignment="Top" BorderBrush="White">
+            <AppBarButton x:Name="BACK" Icon="Back" Label="Back" Foreground="White" />
+            <AppBarButton x:Name="TOP" Icon="Upload" Label="Top" Foreground="White" />
+            <AppBarButton x:Uid="refreshButton" x:Name="REFRESH" RenderTransformOrigin="0.5,0.5" Label="Refresh" Foreground="White">
+                <AppBarButton.Icon>
+                    <SymbolIcon x:Name="refreshIcon"  Symbol="Refresh" RenderTransformOrigin="0.5,0.5">
+                        <SymbolIcon.RenderTransform>
+                            <CompositeTransform />
+                        </SymbolIcon.RenderTransform>
+                    </SymbolIcon>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton x:Name="HOME" Icon="Home" Label="Home" Foreground="White" />
+        </CommandBar>
+        <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
+                    Width="50" Height="50" Background="Transparent" VerticalAlignment="Top" Foreground="White" Canvas.ZIndex="1" />
+        <Grid x:Name="SIDEBAR" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="250" Margin="0,48,0,0" Background="#D83B5998" BorderThickness="0,0,1,0" Visibility="Collapsed">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Height="55">
+                    <Image Width="50" Height="50" Source="Assets/Square44x44Logo.targetsize-256.png" Margin="30,0,0,0" />
+                    <TextBlock Text="All Social" VerticalAlignment="Center" FontSize="24" Foreground="White" Margin="20,0,0,0" />
+                </StackPanel>
+                <StackPanel x:Name="FaceBook" Orientation="Horizontal" Height="55">
+                    <Image x:Name="FB" Source="SocialIcons/Icon_Facebook.png" Width="50" Height="50" />
+                    <TextBlock Text="Facebook" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="10,0,0,0" />
+                </StackPanel>
+                <StackPanel x:Name="Twitter" Orientation="Horizontal" Visibility="Visible" Height="55">
+                    <Image x:Name="TW" Source="SocialIcons/Icon_Twitter.png" Width="50" Height="50" />
+                    <TextBlock Text="Twitter" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="10,0,0,0" />
+                </StackPanel>
+                <StackPanel x:Name="Instagram" Orientation="Horizontal" Visibility="Visible" Height="55">
+                    <Image x:Name="INST" Source="SocialIcons/Icon_Instagram.png" Width="50" Height="50" />
+                    <TextBlock Text="Instagram" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="10,0,0,0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="ABOUT_APP" FontFamily="Segoe MDL2 Assets" Content="&#xE897;"
+                        Width="50" Height="50" Background="Transparent" Foreground="White" />
+                    <TextBlock Text="About All Social" FontSize="18" VerticalAlignment="Center" Foreground="White" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="EXIT_APP" FontFamily="Segoe MDL2 Assets" Content="&#xE7E8;"
+                        Width="50" Height="50" Background="Transparent" Foreground="White" />
+                    <TextBlock Text="Exit" FontSize="18" VerticalAlignment="Center" Foreground="White" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="Info" Margin="15,60,15,15" BorderBrush="Black" BorderThickness="5,5,5,5" CornerRadius="5,5,5,5" Canvas.ZIndex="1" Visibility="Collapsed">
+            <Button x:Name="CloseGrid" Content="&#xE711;" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Canvas.ZIndex="1" Background="#00000000" FontFamily="Segoe MDL2 Assets" />
+            <Pivot x:Name="PivotSettingsAbout" Foreground="White" Background="#FF3B5998" Margin="0,-2,0,0" BorderThickness="1,1,1,1" BorderBrush="Black">
+                <PivotItem x:Name="_PivotAbout" Header="About" Foreground="White">
+                    <StackPanel>
+                        <Image Height="100" HorizontalAlignment="Left" Source="Assets/Square44x44Logo.targetsize-256.png" />
+                        <TextBlock x:Name="App_Name" FontSize="20" TextWrapping="Wrap" Text="SlimBook UWP" />
+                        <TextBlock  Name="version" Text="version" />
+                        <Grid HorizontalAlignment="Stretch" Height="526" VerticalAlignment="Top">
+                            <ScrollViewer x:Name="ScrollView" IsTabStop="True" VerticalScrollBarVisibility="Auto" Margin="0,5,0,5" BorderBrush="#FFA0A0A0">
+                                <TextBlock x:Name="about" TextWrapping="Wrap" Text="privacy" Foreground="White" FontSize="16" />
+                            </ScrollViewer>
+                        </Grid>
+                    </StackPanel>
+                </PivotItem>
+                <PivotItem x:Name="_PivotCredits" Header="Credits" Foreground="White">
+                    <StackPanel>
+                        <TextBlock x:Name="developers" Text="Developers" FontSize="24" />
+                        <HyperlinkButton x:Name="hyperDev" Content="Celestial Doom" HorizontalAlignment="Left" VerticalAlignment="Stretch" FontSize="22" Visibility="Visible" Foreground="White" FontWeight="Bold" />
+                        <Grid Height="50" />
+                        <Image Height="100" HorizontalAlignment="Left" Source="Assets/Square44x44Logo.targetsize-256.png" />
+                        <TextBlock Text="App Logo" TextWrapping="Wrap" FontSize="24" />
+                        <HyperlinkButton x:Name="hyperLogo" Content="Post Image" HorizontalAlignment="Left" VerticalAlignment="Stretch" FontSize="22" Foreground="White" FontWeight="Bold" />
+                        <TextBlock Text="Donations" TextWrapping="Wrap" FontSize="24" Visibility="Collapsed" />
+                        <Button Content="Donations" HorizontalAlignment="Left" VerticalAlignment="Stretch" FontSize="22" Foreground="White" Visibility="Collapsed" />
+                    </StackPanel>
+                </PivotItem>
+                <PivotItem x:Name="_PivotPrivacy" Header="Privacy" Foreground="White">
+                    <Grid Margin="0">
+                        <ScrollViewer x:Name="myScrollView" IsTabStop="True" VerticalScrollBarVisibility="Auto" Margin="5,5,5,5" BorderBrush="#FFA0A0A0">
+                            <TextBlock x:Name="privacy" TextWrapping="Wrap" Text="privacy" />
+                        </ScrollViewer>
+                    </Grid>
+                </PivotItem>
+            </Pivot>
+        </Grid>
     </Grid>
 </Page>
