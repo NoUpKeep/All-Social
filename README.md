@@ -5,6 +5,7 @@
 [![HitCount](http://hits.dwyl.io/CelestialDoom/All-Social.svg)](http://hits.dwyl.io/CelestialDoom/All-Social)
 [![GitHub contributors](https://img.shields.io/github/contributors/CelestialDoom/All-Social.svg)](https://github.com/CelestialDoom/All-Social/graphs/contributors)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/CelestialDoom/All-Social/issues)
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 All Social is a UWP app for Windows 10 Mobile to allow the user to access their social media accounts from one app.
 
