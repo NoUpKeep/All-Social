@@ -14,10 +14,16 @@
         </Storyboard>
     </Page.Resources>
     <Grid>
-        <WebView x:Name="AllSocialFB" Margin="0,48,0,0" />
-        <WebView x:Name="AllSocialTW" Margin="0,48,0,0" Visibility="Collapsed" />
-        <WebView x:Name="AllSocialINST" Margin="0,48,0,0" Visibility="Collapsed" />
-        <WebView x:Name="AllSocialTELE" Margin="0,48,0,0" Visibility="Collapsed" />
+        <!--Facebook-->
+        <WebView x:Name="AllSocial0" Margin="0,48,0,0" />
+        <!--Facebook Messenger-->
+        <WebView x:Name="AllSocial1" Margin="0,48,0,0" />
+        <!--Twitter-->
+        <WebView x:Name="AllSocial2" Margin="0,48,0,0" Visibility="Collapsed" />
+        <!--Instagram-->
+        <WebView x:Name="AllSocial3" Margin="0,48,0,0" Visibility="Collapsed" />
+        <!--Telegram-->
+        <WebView x:Name="AllSocial4" Margin="0,48,0,0" Visibility="Collapsed" />
         <CommandBar x:Name="CB" Background="#FF3B5998" Foreground="White" VerticalAlignment="Top" BorderBrush="White">
             <AppBarButton x:Name="BACK" Icon="Back" Label="Back" Foreground="White" />
             <AppBarButton x:Name="TOP" Icon="Upload" Label="Top" Foreground="White" />
@@ -34,15 +40,19 @@
         </CommandBar>
         <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
                     Width="50" Height="50" Background="Transparent" VerticalAlignment="Top" Foreground="White" Canvas.ZIndex="1" />
-        <Grid x:Name="SIDEBAR" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="250" Margin="0,48,0,0" Background="#D83B5998" BorderThickness="0,0,1,0" Visibility="Visible">
+        <Grid x:Name="SIDEBAR" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="250" Margin="0,48,0,0" Background="#D83B5998" BorderThickness="0,0,1,0" Visibility="Collapsed">
             <StackPanel>
-                <StackPanel Orientation="Horizontal" Height="55">
-                    <Image Width="50" Height="50" Source="Assets/Square44x44Logo.targetsize-256.png" Margin="30,0,0,0" />
-                    <TextBlock Text="All Social" VerticalAlignment="Center" FontSize="24" Foreground="White" Margin="20,0,0,0" />
+                <StackPanel Orientation="Horizontal" Height="75" Background="#72000000" BorderBrush="White" BorderThickness="0,0,0,1">
+                    <Image Width="60" Height="60" Source="Assets/Square44x44Logo.targetsize-256.png" Margin="30,0,0,0" VerticalAlignment="Center" />
+                    <TextBlock Text="All Social" VerticalAlignment="Center" FontSize="24" Foreground="White" Margin="10,0,0,0" />
                 </StackPanel>
                 <StackPanel x:Name="FaceBook" Orientation="Horizontal" Height="55">
                     <Image x:Name="FB" Source="SocialIcons/Icon_Facebook.png" Width="50" Height="50" />
                     <TextBlock Text="Facebook" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="10,0,0,0" />
+                </StackPanel>
+                <StackPanel x:Name="FaceBookMess" Orientation="Horizontal" Height="55">
+                    <Image x:Name="FBMESS" Source="SocialIcons/Icon_Messenger.png" Width="50" Height="50" />
+                    <TextBlock Text="Facebook Messenger" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="10,0,0,0" />
                 </StackPanel>
                 <StackPanel x:Name="Twitter" Orientation="Horizontal" Visibility="Visible" Height="55">
                     <Image x:Name="TW" Source="SocialIcons/Icon_Twitter.png" Width="50" Height="50" />
@@ -67,21 +77,30 @@
                     <TextBlock Text="Exit" FontSize="18" VerticalAlignment="Center" Foreground="White" />
                 </StackPanel>
             </StackPanel>
+            <Grid VerticalAlignment="Bottom" Height="25">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Created with " Foreground="White" FontSize="14" />
+                    <TextBlock Text=" &#xEB52; " Foreground="#FFDA1D1D" FontSize="14" FontFamily="Segoe MDL2 Assets" />
+                    <TextBlock Text=" in the UK" Foreground="White" FontSize="14" />
+                </StackPanel>
+            </Grid>
         </Grid>
-        <Grid x:Name="Info" Margin="15,60,15,15" BorderBrush="Black" BorderThickness="5,5,5,5" CornerRadius="5,5,5,5" Canvas.ZIndex="1" Visibility="Collapsed">
+        <Grid x:Name="Info" Margin="15,60,15,15" BorderBrush="Black" BorderThickness="5,5,5,5" CornerRadius="5,5,5,5" Canvas.ZIndex="1" Visibility="Collapsed" Background="#FF3B5998">
             <Button x:Name="CloseGrid" Content="&#xE711;" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Canvas.ZIndex="1" Background="#00000000" FontFamily="Segoe MDL2 Assets" />
-            <Pivot x:Name="PivotSettingsAbout" Foreground="White" Background="#FF3B5998" Margin="0,-2,0,0" BorderThickness="1,1,1,1" BorderBrush="Black">
+            <Pivot x:Name="PivotSettingsAbout" Foreground="White" Background="{x:Null}" Margin="0,50,0,0" BorderThickness="1,1,1,1" BorderBrush="Black">
                 <PivotItem x:Name="_PivotAbout" Header="About" Foreground="White">
                     <StackPanel>
                         <Image Height="100" HorizontalAlignment="Left" Source="Assets/Square44x44Logo.targetsize-256.png" />
                         <TextBlock x:Name="App_Name" FontSize="20" TextWrapping="Wrap" Text="SlimBook UWP" />
                         <TextBlock  Name="version" Text="version" />
-                        <Grid HorizontalAlignment="Stretch" Height="526" VerticalAlignment="Top">
-                            <ScrollViewer x:Name="ScrollView" IsTabStop="True" VerticalScrollBarVisibility="Auto" Margin="0,5,0,5" BorderBrush="#FFA0A0A0">
-                                <TextBlock x:Name="about" TextWrapping="Wrap" Text="privacy" Foreground="White" FontSize="16" />
-                            </ScrollViewer>
-                        </Grid>
                     </StackPanel>
+                </PivotItem>
+                <PivotItem x:Name="_PivotInfo" Header="Info">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5">
+                        <ScrollViewer x:Name="ScrollView" IsTabStop="True" VerticalScrollBarVisibility="Auto" Margin="0,5,0,5" BorderBrush="#FFA0A0A0">
+                            <TextBlock x:Name="about" TextWrapping="Wrap" Text="privacy" Foreground="White" FontSize="16" />
+                        </ScrollViewer>
+                    </Grid>
                 </PivotItem>
                 <PivotItem x:Name="_PivotCredits" Header="Credits" Foreground="White">
                     <StackPanel>
@@ -99,6 +118,13 @@
                     <Grid Margin="0">
                         <ScrollViewer x:Name="myScrollView" IsTabStop="True" VerticalScrollBarVisibility="Auto" Margin="5,5,5,5" BorderBrush="#FFA0A0A0">
                             <TextBlock x:Name="privacy" TextWrapping="Wrap" Text="privacy" />
+                        </ScrollViewer>
+                    </Grid>
+                </PivotItem>
+                <PivotItem x:Name="_PivotLicense" Header="License" Foreground="White">
+                    <Grid Margin="0">
+                        <ScrollViewer x:Name="myScrollViewLicense" IsTabStop="True" VerticalScrollBarVisibility="Auto" Margin="5,5,5,5" BorderBrush="#FFA0A0A0">
+                            <TextBlock x:Name="license" TextWrapping="Wrap" Text="privacy" />
                         </ScrollViewer>
                     </Grid>
                 </PivotItem>
