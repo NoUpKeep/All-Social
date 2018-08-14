@@ -27,6 +27,7 @@ Module Vars
     'This stores information about the application
 
     Public SocialNetworkURL As String() = {"https://touch.facebook.com/home.php?sk=h_chr", "http://m.me/", "https://mobile.twitter.com/", "https://www.instagram.com/", "https://web.telegram.org/"}
+    'Public SocialNetworkURL As String() = {"https://www.facebook.com/?sk=h_chr", "http://m.me/", "https://mobile.twitter.com/", "https://www.instagram.com/", "https://web.telegram.org/"}
     'This stores the URL of the social network (optimized for mobile... I hope!)
 
     Public RED_HEX As String() = {"59", "59", "29", "245", "86"}
@@ -61,5 +62,10 @@ Module Vars
             Application.Current.Exit()
         End If
     End Function
+    'This will display a popup, use either 'notification' to display a, um, notification, or leave the request blank for a yes/no option
+
+    Public h = ApplicationView.GetForCurrentView().VisibleBounds.Height - 44
+    Public density As Single = DisplayInformation.GetForCurrentView().LogicalDpi
+    Public barHeight As Integer = CInt((h / density))
 
 End Module

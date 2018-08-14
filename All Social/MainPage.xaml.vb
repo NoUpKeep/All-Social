@@ -87,9 +87,6 @@ Public NotInheritable Class MainPage
     Private Async Sub AllSocial0_LoadCompleted(sender As Object, e As NavigationEventArgs) Handles AllSocial0.LoadCompleted
         Dim cssToApply As String = ""
         cssToApply += "#header {position: fixed; z-index: 12; top: 0px;} #root {padding-top: 44px;} .item.more {position:fixed; bottom: 0px; text-align: center !important;}"
-        Dim h = ApplicationView.GetForCurrentView().VisibleBounds.Height - 44
-        Dim density As Single = DisplayInformation.GetForCurrentView().LogicalDpi
-        Dim barHeight As Integer = CInt((h / density))
         cssToApply += ".flyout {max-height:" & barHeight & "px; overflow-y:scroll;}"
         cssToApply += "#m_newsfeed_stream article[data-ft*=""\\""ei\\"":\\""""] {display:none !important;}"
         Await AllSocial0.InvokeScriptAsync("eval", {"javascript:function addStyleString(str) { var node = document.createElement('style'); node.innerHTML = " & "str; document.body.appendChild(node); } addStyleString('" & cssToApply & "');"})
@@ -123,9 +120,6 @@ Public NotInheritable Class MainPage
     Private Async Sub AllSocial1_LoadCompleted(sender As Object, e As NavigationEventArgs) Handles AllSocial1.LoadCompleted
         Dim cssToApply As String = ""
         cssToApply += "#header {position: fixed; z-index: 12; top: 0px;} #root {padding-top: 44px;} .item.more {position:fixed; bottom: 0px; text-align: center !important;}"
-        Dim h = ApplicationView.GetForCurrentView().VisibleBounds.Height - 44
-        Dim density As Single = DisplayInformation.GetForCurrentView().LogicalDpi
-        Dim barHeight As Integer = CInt((h / density))
         cssToApply += ".flyout {max-height:" & barHeight & "px; overflow-y:scroll;}"
         cssToApply += "#m_newsfeed_stream article[data-ft*=""\\""ei\\"":\\""""] {display:none !important;}"
         Await AllSocial1.InvokeScriptAsync("eval", {"javascript:function addStyleString(str) { var node = document.createElement('style'); node.innerHTML = " & "str; document.body.appendChild(node); } addStyleString('" & cssToApply & "');"})
@@ -178,9 +172,6 @@ Public NotInheritable Class MainPage
     Private Async Sub AllSocial3_LoadCompleted(sender As Object, e As NavigationEventArgs) Handles AllSocial3.LoadCompleted
         Dim cssToApply As String = ""
         cssToApply += "#header {position: fixed; z-index: 12; top: 0px;} #root {padding-top: 44px;} .item.more {position:fixed; bottom: 0px; text-align: center !important;}"
-        Dim h = ApplicationView.GetForCurrentView().VisibleBounds.Height - 44
-        Dim density As Single = DisplayInformation.GetForCurrentView().LogicalDpi
-        Dim barHeight As Integer = CInt((h / density))
         cssToApply += ".flyout {max-height:" & barHeight & "px; overflow-y:scroll;}"
         cssToApply += "#m_newsfeed_stream article[data-ft*=""\\""ei\\"":\\""""] {display:none !important;}"
         Await AllSocial3.InvokeScriptAsync("eval", {"javascript:function addStyleString(str) { var node = document.createElement('style'); node.innerHTML = " & "str; document.body.appendChild(node); } addStyleString('" & cssToApply & "');"})
@@ -441,6 +432,7 @@ Public NotInheritable Class MainPage
     ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub MainPage_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         AddHandler HardwareButtons.BackPressed, AddressOf BackPressed
+        UserAgentHelper.SetDefaultUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36")
         SIDEBAR.Visibility = Visibility.Collapsed
         Info.Visibility = Visibility.Collapsed
         iconRotation.Begin()
@@ -570,4 +562,7 @@ Public NotInheritable Class MainPage
         SelectNetwork(2)
     End Sub
 
+    Private Sub APP_SETTINGS_Click(sender As Object, e As RoutedEventArgs) Handles APP_SETTINGS.Click
+        Me.Frame.Navigate(GetType(Settings))
+    End Sub
 End Class

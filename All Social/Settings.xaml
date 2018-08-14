@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="All_Social.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:All_Social"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Dark">
+
+    <Grid>
+        <Grid VerticalAlignment="Top" Height="50" BorderBrush="Black" BorderThickness="0,0,0,1">
+            <TextBlock Text="All Social Settings" VerticalAlignment="Center" FontSize="24" Margin="10,0,10,0" />
+        </Grid>
+        <Grid VerticalAlignment="Stretch" Margin="0,50,0,50">
+            <StackPanel Margin="10,50,10,50" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" Height="65">
+                    <CheckBox x:Name="CHK_FB" MinWidth="32" />
+                    <Image HorizontalAlignment="Center" Height="50" Margin="0,0,0,0" VerticalAlignment="Center" Width="50" Source="SocialIcons/Icon_Facebook.png"/>
+                    <TextBlock Text="Show Facebook" VerticalAlignment="Center" FontSize="24" Margin="10,0,10,0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="65">
+                    <CheckBox x:Name="CHK_FBM" MinWidth="32" />
+                    <Image HorizontalAlignment="Center" Height="50" Margin="0,0,0,0" VerticalAlignment="Center" Width="50" Source="SocialIcons/Icon_Messenger.png"/>
+                    <TextBlock Text="Show Facebook Messenger" VerticalAlignment="Center" FontSize="24" Margin="10,0,10,0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="65">
+                    <CheckBox x:Name="CHK_TW" MinWidth="32" />
+                    <Image HorizontalAlignment="Center" Height="50" Margin="0,0,0,0" VerticalAlignment="Center" Width="50" Source="SocialIcons/Icon_Twitter.png"/>
+                    <TextBlock Text="Show Twitter" VerticalAlignment="Center" FontSize="24" Margin="10,0,10,0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="65">
+                    <CheckBox x:Name="CHK_INST" MinWidth="32" />
+                    <Image HorizontalAlignment="Center" Height="50" Margin="0,0,0,0" VerticalAlignment="Center" Width="50" Source="SocialIcons/Icon_Instagram.png"/>
+                    <TextBlock Text="Show Instagram" VerticalAlignment="Center" FontSize="24" Margin="10,0,10,0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="65">
+                    <CheckBox x:Name="CHK_TELE" MinWidth="32" />
+                    <Image HorizontalAlignment="Center" Height="50" Margin="0,0,0,0" VerticalAlignment="Center" Width="50" Source="SocialIcons/Icon_Telegram.png"/>
+                    <TextBlock Text="Show Telegram" VerticalAlignment="Center" FontSize="24" Margin="10,0,10,0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="txtCHECKBOX" Text="CHECKBOX"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid VerticalAlignment="Bottom" Height="50" BorderBrush="Black" BorderThickness="0,1,0,0">
+            <Button x:Name="SAVE" FontFamily="Segoe MDL2 Assets" Content="&#xE74E;"
+                    Width="50" Height="50" Background="Transparent" VerticalAlignment="Top" Canvas.ZIndex="1" HorizontalAlignment="Right" FontSize="32" Padding="1,1,1,1" />
+            <Button x:Name="CANCEL" FontFamily="Segoe MDL2 Assets" Content="&#xE711;" Width="50" Height="50" Background="Transparent" VerticalAlignment="Top" Canvas.ZIndex="1" HorizontalAlignment="Right" Margin="0,0,50,0" FontSize="32" Padding="1,1,1,1" />
+        </Grid>
+    </Grid>
+</Page>
