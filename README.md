@@ -1,4 +1,4 @@
-![All-Social](https://s19.postimg.cc/czwoq63f7/All_Social_Sidebar.png)
+![All-Social](https://i.postimg.cc/8PYGXfRz/All-Social-Sidebar.png)
 # All Social
 [![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.png?v=103)](https://opensource.org/licenses/GPL-3.0/)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
