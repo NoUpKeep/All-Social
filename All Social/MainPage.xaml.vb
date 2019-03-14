@@ -1,5 +1,6 @@
 ﻿' The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
+Imports Windows.ApplicationModel.Resources
 Imports Windows.Phone.UI.Input
 Imports Windows.UI
 Imports Windows.UI.Core
@@ -29,24 +30,18 @@ Public NotInheritable Class MainPage
                     Await displayMessageAsync("Quit " & AppName, "Are you sure you want to quit the app?", "")
                 End If
             Case 1
-                If AllSocial1.CanGoBack Then
-                    AllSocial1.GoBack()
-                Else
-                    Await displayMessageAsync("Quit " & AppName, "Are you sure you want to quit the app?", "")
-                End If
-            Case 2
                 If AllSocial2.CanGoBack Then
                     AllSocial2.GoBack()
                 Else
                     Await displayMessageAsync("Quit " & AppName, "Are you sure you want to quit the app?", "")
                 End If
-            Case 3
+            Case 2
                 If AllSocial3.CanGoBack Then
                     AllSocial3.GoBack()
                 Else
                     Await displayMessageAsync("Quit " & AppName, "Are you sure you want to quit the app?", "")
                 End If
-            Case 4
+            Case 3
                 If AllSocial4.CanGoBack Then
                     AllSocial4.GoBack()
                 Else
@@ -66,7 +61,7 @@ Public NotInheritable Class MainPage
         AccessWhat = SocialNetworkAccessWhat(WhatSocialNetwork)
         Company = SocialNetworkCompany(WhatSocialNetwork)
         AboutInfo = AppName & " is a UWP app for Windows 10 Mobile to allow the user to access " & AccessWhat & " from a single portal." & vbCrLf & vbCrLf & "Small memory footprint, open source, and forever free." & vbCrLf & vbCrLf & "This app is NOT associated in ANY way with " & Company & vbCrLf & vbCrLf & "----------" & vbCrLf & vbCrLf & "This UWP app is currently in a BETA test mode." & vbCrLf & vbCrLf & "Things MAY change in future versions."
-        SettingsSetup()
+        AboutApp(0)
     End Sub
 
     ''' <summary>
@@ -220,24 +215,18 @@ Public NotInheritable Class MainPage
                     Await displayMessageAsync("Quit " & AppName, "Are you sure you want to quit the app?", "")
                 End If
             Case 1
-                If AllSocial1.CanGoBack Then
-                    AllSocial1.GoBack()
-                Else
-                    Await displayMessageAsync("Quit " & AppName, "Are you sure you want to quit the app?", "")
-                End If
-            Case 2
                 If AllSocial2.CanGoBack Then
                     AllSocial2.GoBack()
                 Else
                     Await displayMessageAsync("Quit " & AppName, "Are you sure you want to quit the app?", "")
                 End If
-            Case 3
+            Case 2
                 If AllSocial3.CanGoBack Then
                     AllSocial3.GoBack()
                 Else
                     Await displayMessageAsync("Quit " & AppName, "Are you sure you want to quit the app?", "")
                 End If
-            Case 4
+            Case 3
                 If AllSocial4.CanGoBack Then
                     AllSocial4.GoBack()
                 Else
@@ -253,74 +242,45 @@ Public NotInheritable Class MainPage
         Select Case WhatSocialNetwork
             Case 0
                 FaceBook.Visibility = Visibility.Collapsed
-                FaceBookMess.Visibility = Visibility.Visible
                 Twitter.Visibility = Visibility.Visible
                 Instagram.Visibility = Visibility.Visible
                 Telegram.Visibility = Visibility.Visible
                 '
                 AllSocial0.Visibility = Visibility.Visible
-                AllSocial1.Visibility = Visibility.Collapsed
                 AllSocial2.Visibility = Visibility.Collapsed
                 AllSocial3.Visibility = Visibility.Collapsed
                 AllSocial4.Visibility = Visibility.Collapsed
             Case 1
                 FaceBook.Visibility = Visibility.Visible
-                FaceBookMess.Visibility = Visibility.Collapsed
-                Twitter.Visibility = Visibility.Visible
-                Instagram.Visibility = Visibility.Visible
-                Telegram.Visibility = Visibility.Visible
-                '
-                AllSocial0.Visibility = Visibility.Collapsed
-                AllSocial1.Visibility = Visibility.Visible
-                AllSocial2.Visibility = Visibility.Collapsed
-                AllSocial3.Visibility = Visibility.Collapsed
-                AllSocial4.Visibility = Visibility.Collapsed
-            Case 2
-                FaceBook.Visibility = Visibility.Visible
-                FaceBookMess.Visibility = Visibility.Visible
                 Twitter.Visibility = Visibility.Collapsed
                 Instagram.Visibility = Visibility.Visible
                 Telegram.Visibility = Visibility.Visible
                 '
                 AllSocial0.Visibility = Visibility.Collapsed
-                AllSocial1.Visibility = Visibility.Collapsed
                 AllSocial2.Visibility = Visibility.Visible
                 AllSocial3.Visibility = Visibility.Collapsed
                 AllSocial4.Visibility = Visibility.Collapsed
-            Case 3
+            Case 2
                 FaceBook.Visibility = Visibility.Visible
-                FaceBookMess.Visibility = Visibility.Visible
                 Twitter.Visibility = Visibility.Visible
                 Instagram.Visibility = Visibility.Collapsed
                 Telegram.Visibility = Visibility.Visible
                 '
                 AllSocial0.Visibility = Visibility.Collapsed
-                AllSocial1.Visibility = Visibility.Collapsed
                 AllSocial2.Visibility = Visibility.Collapsed
                 AllSocial3.Visibility = Visibility.Visible
                 AllSocial4.Visibility = Visibility.Collapsed
-            Case 4
+            Case 3
                 FaceBook.Visibility = Visibility.Visible
-                FaceBookMess.Visibility = Visibility.Visible
                 Twitter.Visibility = Visibility.Visible
                 Instagram.Visibility = Visibility.Visible
                 Telegram.Visibility = Visibility.Collapsed
                 '
                 AllSocial0.Visibility = Visibility.Collapsed
-                AllSocial1.Visibility = Visibility.Collapsed
                 AllSocial2.Visibility = Visibility.Collapsed
                 AllSocial3.Visibility = Visibility.Collapsed
                 AllSocial4.Visibility = Visibility.Visible
         End Select
-    End Sub
-
-    ''' <summary>
-    ''' Handles the Click event of the CloseGrid control.
-    ''' </summary>
-    ''' <param name="sender">The source of the event.</param>
-    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-    Private Sub CloseGrid_Click(sender As Object, e As RoutedEventArgs) Handles CloseGrid.Click
-        Info.Visibility = Visibility.Collapsed
     End Sub
 
     ''' <summary>
@@ -343,15 +303,6 @@ Public NotInheritable Class MainPage
     End Sub
 
     ''' <summary>
-    ''' Handles the Tapped event of the FBMESS control.
-    ''' </summary>
-    ''' <param name="sender">The source of the event.</param>
-    ''' <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
-    Private Sub FBMESS_Tapped(sender As Object, e As TappedRoutedEventArgs) Handles FBMESS.Tapped
-        SelectNetwork(1)
-    End Sub
-
-    ''' <summary>
     ''' Goes the home.
     ''' </summary>
     Private Sub Go_Home()
@@ -362,12 +313,10 @@ Public NotInheritable Class MainPage
             Case 0
                 AllSocial0.Navigate(New Uri(MyWebViewSource))
             Case 1
-                AllSocial1.Navigate(New Uri(MyWebViewSource))
-            Case 2
                 AllSocial2.Navigate(New Uri(MyWebViewSource))
-            Case 3
+            Case 2
                 AllSocial3.Navigate(New Uri(MyWebViewSource))
-            Case 4
+            Case 3
                 AllSocial4.Navigate(New Uri(MyWebViewSource))
         End Select
     End Sub
@@ -397,32 +346,12 @@ Public NotInheritable Class MainPage
     End Sub
 
     ''' <summary>
-    ''' Handles the Click event of the hyperDev control.
-    ''' </summary>
-    ''' <param name="sender">The source of the event.</param>
-    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-    Private Async Sub hyperDev_Click(sender As Object, e As RoutedEventArgs) Handles hyperDev.Click
-        Dim logoURL = New Uri("https://github.com/CelestialDoom/All-Social")
-        Await Windows.System.Launcher.LaunchUriAsync(logoURL)
-    End Sub
-
-    ''' <summary>
-    ''' Handles the Click event of the hyperLogo control.
-    ''' </summary>
-    ''' <param name="sender">The source of the event.</param>
-    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-    Private Async Sub hyperLogo_Click(sender As Object, e As RoutedEventArgs) Handles hyperLogo.Click
-        Dim logoURL = New Uri("https://s19.postimg.cc/kfvybyyub/All_Social_v1_inv.png")
-        Await Windows.System.Launcher.LaunchUriAsync(logoURL)
-    End Sub
-
-    ''' <summary>
     ''' Handles the Tapped event of the INST control.
     ''' </summary>
     ''' <param name="sender">The source of the event.</param>
     ''' <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
     Private Sub INST_Tapped(sender As Object, e As TappedRoutedEventArgs) Handles INST.Tapped
-        SelectNetwork(3)
+        SelectNetwork(2)
     End Sub
 
     ''' <summary>
@@ -432,9 +361,8 @@ Public NotInheritable Class MainPage
     ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub MainPage_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         AddHandler HardwareButtons.BackPressed, AddressOf BackPressed
-        UserAgentHelper.SetDefaultUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36")
+        'UserAgentHelper.SetDefaultUserAgent(UserAgentString(0))
         SIDEBAR.Visibility = Visibility.Collapsed
-        Info.Visibility = Visibility.Collapsed
         iconRotation.Begin()
         AddHandler SystemNavigationManager.GetForCurrentView().BackRequested, Sub(s, a)
                                                                                   Select Case WhatSocialNetwork
@@ -444,21 +372,16 @@ Public NotInheritable Class MainPage
                                                                                               a.Handled = True
                                                                                           End If
                                                                                       Case 1
-                                                                                          If AllSocial1.CanGoBack Then
-                                                                                              AllSocial2.GoBack()
-                                                                                              a.Handled = True
-                                                                                          End If
-                                                                                      Case 2
                                                                                           If AllSocial2.CanGoBack Then
                                                                                               AllSocial2.GoBack()
                                                                                               a.Handled = True
                                                                                           End If
-                                                                                      Case 3
+                                                                                      Case 2
                                                                                           If AllSocial3.CanGoBack Then
                                                                                               AllSocial3.GoBack()
                                                                                               a.Handled = True
                                                                                           End If
-                                                                                      Case 4
+                                                                                      Case 3
                                                                                           If AllSocial4.CanGoBack Then
                                                                                               AllSocial4.GoBack()
                                                                                               a.Handled = True
@@ -479,12 +402,10 @@ Public NotInheritable Class MainPage
             Case 0
                 AllSocial0.Refresh()
             Case 1
-                AllSocial1.Refresh()
-            Case 2
                 AllSocial2.Refresh()
-            Case 3
+            Case 2
                 AllSocial3.Refresh()
-            Case 4
+            Case 3
                 AllSocial4.Refresh()
         End Select
     End Sub
@@ -500,27 +421,44 @@ Public NotInheritable Class MainPage
         CB.Background = New SolidColorBrush(Color.FromArgb(255, RED_HEX(x), GREEN_HEX(x), BLUE_HEX(x)))
         MyWebViewSource = SocialNetworkURL(x)
         WhatSocialNetwork = x
+        SelectUserAgent(x)
         iconRotation.Begin()
         ClearSocialNetwork()
         Go_Home()
     End Sub
 
+    Private Sub SelectUserAgent(ByVal x As Integer)
+        Select Case x
+            Case 0
+                UserAgentHelper.SetDefaultUserAgent(UserAgentString(0))
+            Case 1
+                UserAgentHelper.SetDefaultUserAgent(UserAgentString(0))
+            Case 2
+                UserAgentHelper.SetDefaultUserAgent(UserAgentString(0))
+            Case 3
+                UserAgentHelper.SetDefaultUserAgent(UserAgentString(0))
+        End Select
+    End Sub
+
     ''' <summary>
-    ''' Settingses the setup.
+    ''' Settingse the setup.
     ''' </summary>
-    Private Sub SettingsSetup()
+    Private Sub AboutApp(ByVal x As Integer)
         Dim number As PackageVersion = Package.Current.Id.Version
-        PivotSettingsAbout.SelectedIndex = 0
-        version.Text = String.Format(" {0}.{1}.{2}" & vbCrLf, number.Major, number.Minor, number.Build)
-        App_Name.Text = AppName
-        privacy.Text = PrivacyInfo
-        about.Text = AboutInfo
-        license.Text = MIT_License
-        ScrollView.ChangeView(Nothing, 0, Nothing, True)
-        myScrollView.ChangeView(Nothing, 0, Nothing, True)
-        myScrollViewLicense.ChangeView(Nothing, 0, Nothing, True)
-        Info.Background = New SolidColorBrush(Color.FromArgb(255, RED_HEX(WhatSocialNetwork), GREEN_HEX(WhatSocialNetwork), BLUE_HEX(WhatSocialNetwork)))
-        Info.Visibility = Visibility.Visible
+        Dim build As String
+        build = AppName & " v." & String.Format(" {0}.{1}.{2}" & vbCrLf, number.Major, number.Minor, number.Build)
+        txtInfoTitle.Text = build
+        myScrollView2.ChangeView(Nothing, 0, Nothing, True)
+        Select Case x
+            Case 0
+                txtInfoText.Text = AboutInfo
+            Case 1
+                txtInfoText.Text = PrivacyInfo
+            Case 2
+                txtInfoText.Text = MIT_License
+        End Select
+        HamburgerButton.Visibility = Visibility.Collapsed
+        gINFO.Visibility = Visibility.Visible
     End Sub
 
     ''' <summary>
@@ -529,7 +467,7 @@ Public NotInheritable Class MainPage
     ''' <param name="sender">The source of the event.</param>
     ''' <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
     Private Sub TELE_Tapped(sender As Object, e As TappedRoutedEventArgs) Handles TELE.Tapped
-        SelectNetwork(4)
+        SelectNetwork(3)
     End Sub
 
     ''' <summary>
@@ -543,12 +481,10 @@ Public NotInheritable Class MainPage
             Case 0
                 Await AllSocial0.InvokeScriptAsync("eval", New String() {ScrollToTopString})
             Case 1
-                Await AllSocial1.InvokeScriptAsync("eval", New String() {ScrollToTopString})
-            Case 2
                 Await AllSocial2.InvokeScriptAsync("eval", New String() {ScrollToTopString})
-            Case 3
+            Case 2
                 Await AllSocial3.InvokeScriptAsync("eval", New String() {ScrollToTopString})
-            Case 4
+            Case 3
                 Await AllSocial4.InvokeScriptAsync("eval", New String() {ScrollToTopString})
         End Select
     End Sub
@@ -559,10 +495,32 @@ Public NotInheritable Class MainPage
     ''' <param name="sender">The source of the event.</param>
     ''' <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
     Private Sub TW_Tapped(sender As Object, e As TappedRoutedEventArgs) Handles TW.Tapped
-        SelectNetwork(2)
+        SelectNetwork(1)
     End Sub
 
-    Private Sub APP_SETTINGS_Click(sender As Object, e As RoutedEventArgs) Handles APP_SETTINGS.Click
-        Me.Frame.Navigate(GetType(Settings))
+    Private Sub AllSocial0_NewWindowRequested(sender As WebView, args As WebViewNewWindowRequestedEventArgs) Handles AllSocial0.NewWindowRequested
+        If args.Uri.AbsoluteUri.Contains(".gif") OrElse args.Uri.AbsoluteUri.Contains("video") Then
+            AllSocial0.Navigate(args.Uri)
+            args.Handled = True
+        End If
+    End Sub
+
+    Private Sub AllSocial0_NavigationFailed(sender As Object, e As WebViewNavigationFailedEventArgs) Handles AllSocial0.NavigationFailed
+        Dim loader = New ResourceLoader()
+        Dim noConnection As String = loader.GetString("noConnection")
+        AllSocial0.NavigateToString(noConnection)
+    End Sub
+
+    Private Sub CloseInfo_Click(sender As Object, e As RoutedEventArgs) Handles CloseInfo.Click
+        HamburgerButton.Visibility = Visibility.Visible
+        gINFO.Visibility = Visibility.Collapsed
+    End Sub
+
+    Private Sub PRIVACY_Click(sender As Object, e As RoutedEventArgs) Handles PRIVACY.Click
+        AboutApp(1)
+    End Sub
+
+    Private Sub APP_LICENSE_Click(sender As Object, e As RoutedEventArgs) Handles APP_LICENSE.Click
+        AboutApp(2)
     End Sub
 End Class

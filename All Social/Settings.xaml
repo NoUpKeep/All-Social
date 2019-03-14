@@ -20,11 +20,6 @@
                     <TextBlock Text="Show Facebook" VerticalAlignment="Center" FontSize="24" Margin="10,0,10,0" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Height="65">
-                    <CheckBox x:Name="CHK_FBM" MinWidth="32" />
-                    <Image HorizontalAlignment="Center" Height="50" Margin="0,0,0,0" VerticalAlignment="Center" Width="50" Source="SocialIcons/Icon_Messenger.png"/>
-                    <TextBlock Text="Show Facebook Messenger" VerticalAlignment="Center" FontSize="24" Margin="10,0,10,0" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Height="65">
                     <CheckBox x:Name="CHK_TW" MinWidth="32" />
                     <Image HorizontalAlignment="Center" Height="50" Margin="0,0,0,0" VerticalAlignment="Center" Width="50" Source="SocialIcons/Icon_Twitter.png"/>
                     <TextBlock Text="Show Twitter" VerticalAlignment="Center" FontSize="24" Margin="10,0,10,0" />

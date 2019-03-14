@@ -2,10 +2,10 @@
 
 Module Vars
 
-    Public SocialNetworkAccessWhat As String() = {"your Facebook account", "your Facebook account", "your Twitter account", "your Instagram account"}
+    Public SocialNetworkAccessWhat As String() = {"your Facebook account", "your Twitter account", "your Instagram account", "your Telegram account"}
     'This stores which account you will access
 
-    Public SocialNetworkCompany As String() = {"Facebook, Inc.", "Facebook, Inc.", "Twitter, Inc.", "Instagram, Inc.", "Telegram Messenger LLP"}
+    Public SocialNetworkCompany As String() = {"Facebook, Inc.", "Twitter, Inc.", "Instagram, Inc.", "Telegram Messenger LLP"}
     'This stores the company name
 
     Public sidebar_open As Boolean = False
@@ -23,20 +23,19 @@ Module Vars
     Public PrivacyInfo As String = AppName & " Privacy" & vbCrLf & vbCrLf & "----------" & vbCrLf & vbCrLf & "No personal, or private, information of either you, or your device, is collected by this app." & vbCrLf & vbCrLf & "Neither is ANY information transmitted by this app."
     'This stores the applications' privacy information
 
-    Public AboutInfo As String = AppName & " is a UWP app for Windows 10 Mobile to allow the user to access " & AccessWhat & " from a single portal." & vbCrLf & "Small memory footprint, open source, and forever free." & vbCrLf & "This app is NOT associated in ANY way with " & Company & vbCrLf & "----------" & vbCrLf & vbCrLf & "This UWP app is currently in a BETA test mode." & vbCrLf & "Things MAY change in future versions."
+    Public AboutInfo As String = AppName & " is a UWP app for Windows 10 Mobile to allow the user to access " & AccessWhat & " from a single portal." & vbCrLf & "Small memory footprint, open source, and forever free." & vbCrLf & "This app is NOT associated in ANY way with " & Company & vbCrLf & "----------" & vbCrLf & vbCrLf & "This UWP app is currently in a BETA test mode." & vbCrLf & "Things MAY change in future versions." & vbCrLf & "----------" & vbCrLf & "On a side note, this app is tricking the various websites into believing that you are using a Internet Explorer Mobile 11 on Windows Phone 8.1"
     'This stores information about the application
 
-    Public SocialNetworkURL As String() = {"https://touch.facebook.com/home.php?sk=h_chr", "http://m.me/", "https://mobile.twitter.com/", "https://www.instagram.com/", "https://web.telegram.org/"}
-    'Public SocialNetworkURL As String() = {"https://www.facebook.com/?sk=h_chr", "http://m.me/", "https://mobile.twitter.com/", "https://www.instagram.com/", "https://web.telegram.org/"}
+    Public SocialNetworkURL As String() = {"https://touch.facebook.com/home.php?sk=h_chr", "https://mobile.twitter.com/", "https://www.instagram.com/", "https://web.telegram.org/"}
     'This stores the URL of the social network (optimized for mobile... I hope!)
 
-    Public RED_HEX As String() = {"59", "59", "29", "245", "86"}
+    Public RED_HEX As String() = {"59", "29", "245", "86"}
     'Red colour in hex
 
-    Public GREEN_HEX As String() = {"89", "89", "161", "96", "130"}
+    Public GREEN_HEX As String() = {"89", "161", "96", "130"}
     'Green colour in hex
 
-    Public BLUE_HEX As String() = {"152", "152", "242", "64", "163"}
+    Public BLUE_HEX As String() = {"152", "242", "64", "163"}
     'Blue colour in hex
 
     Public WhatSocialNetwork As Integer = 0
@@ -47,6 +46,11 @@ Module Vars
 
     Public MIT_License As String = "The MIT License (MIT)" & vbCrLf & vbCrLf & "Copyright (c) 2015 .NET Foundation" & vbCrLf & vbCrLf & "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:" & vbCrLf & vbCrLf & "The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software." & vbCrLf & vbCrLf & "THE SOFTWARE IS PROVIDED ""As Is"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
     'The MIT License (d'oh!)
+
+    Public UserAgentString As String() = {"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A"}
+    'UserAgent String settings
+
+    Public UserAgentStringChoice = 0
 
     Public Async Function displayMessageAsync(ByVal title As String, ByVal content As String, ByVal dialogType As String) As Task
         Dim messageDialog = New MessageDialog(content, title)
